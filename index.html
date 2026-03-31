@@ -1,76 +1,660 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Divya Naik - Data Analytics Professional Portfolio</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
-        header { background: #4CAF50; color: white; padding: 10px 0; text-align: center; }
-        section { padding: 20px; }
-        h2 { color: #4CAF50; }
-        nav { margin: 20px 0; }
-        nav a { margin: 0 15px; text-decoration: none; color: #4CAF50; }
-        .container { max-width: 800px; margin: auto; }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Divya Naik — Data Analytics Professional</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --navy: #0d1b2a;
+    --navy-mid: #1a2e45;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --cream: #f8f4ee;
+    --text: #2c3e50;
+    --muted: #7a8a99;
+    --white: #ffffff;
+    --border: #ddd5c5;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    background: var(--navy);
+    z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 60px;
+    height: 64px;
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.04em;
+  }
+  .nav-links { display: flex; gap: 36px; }
+  .nav-links a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* HERO */
+  .hero {
+    background: var(--navy);
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 120px 60px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: 0; right: 0;
+    width: 50%; height: 100%;
+    background: linear-gradient(135deg, transparent 0%, rgba(201,168,76,0.05) 100%);
+  }
+  .hero::after {
+    content: 'DN';
+    position: absolute;
+    right: 8%;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 280px;
+    font-weight: 700;
+    color: rgba(201,168,76,0.06);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    user-select: none;
+  }
+  .hero-content { max-width: 680px; position: relative; z-index: 1; }
+  .hero-tag {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    margin-bottom: 28px;
+    font-weight: 500;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px;
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.05;
+    margin-bottom: 24px;
+    letter-spacing: -0.01em;
+  }
+  .hero h1 span { color: var(--gold); }
+  .hero-sub {
+    font-size: 16px;
+    color: rgba(255,255,255,0.6);
+    max-width: 520px;
+    line-height: 1.8;
+    margin-bottom: 40px;
+  }
+  .hero-contact {
+    display: flex; gap: 24px; flex-wrap: wrap;
+    align-items: center;
+  }
+  .hero-contact a {
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.03em;
+    display: flex; align-items: center; gap: 8px;
+    transition: color 0.2s;
+  }
+  .hero-contact a:hover { color: var(--gold); }
+  .contact-dot {
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--gold);
+    opacity: 0.5;
+  }
+
+  /* SECTIONS */
+  section { padding: 100px 60px; }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.1;
+    margin-bottom: 60px;
+  }
+
+  /* SUMMARY */
+  #about {
+    background: var(--white);
+    border-top: 3px solid var(--gold);
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .about-text {
+    font-size: 17px;
+    line-height: 1.85;
+    color: #3d4f60;
+  }
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+  .stat-box {
+    background: var(--cream);
+    padding: 32px 28px;
+    border-left: 3px solid var(--gold);
+  }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-label {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* EXPERIENCE */
+  #experience { background: var(--cream); }
+  .timeline { position: relative; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 8px; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+  }
+  .timeline-item {
+    padding-left: 40px;
+    margin-bottom: 60px;
+    position: relative;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.6s forwards;
+  }
+  .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+  .timeline-item:nth-child(2) { animation-delay: 0.25s; }
+  .timeline-item:nth-child(3) { animation-delay: 0.4s; }
+  .timeline-item:nth-child(4) { animation-delay: 0.55s; }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .timeline-dot {
+    position: absolute;
+    left: -5px; top: 8px;
+    width: 11px; height: 11px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 2px solid var(--cream);
+  }
+  .timeline-period {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .timeline-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .timeline-company {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 16px;
+    letter-spacing: 0.02em;
+  }
+  .timeline-bullets {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .timeline-bullets li {
+    padding-left: 20px;
+    position: relative;
+    color: #4a5d6e;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .timeline-bullets li::before {
+    content: '—';
+    position: absolute; left: 0;
+    color: var(--gold);
+    font-weight: 300;
+  }
+
+  /* SKILLS */
+  #skills { background: var(--navy); }
+  #skills .section-title { color: var(--white); }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  .skill-card {
+    background: var(--navy-mid);
+    padding: 36px 32px;
+    border-top: 2px solid transparent;
+    transition: border-color 0.3s, background 0.3s;
+    cursor: default;
+  }
+  .skill-card:hover {
+    border-color: var(--gold);
+    background: rgba(201,168,76,0.05);
+  }
+  .skill-card-title {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+  .skill-tags {
+    display: flex; flex-wrap: wrap; gap: 8px;
+  }
+  .skill-tag {
+    background: rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.75);
+    padding: 5px 14px;
+    font-size: 12.5px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 2px;
+    letter-spacing: 0.02em;
+  }
+
+  /* EDUCATION */
+  #education { background: var(--white); }
+  .edu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+  .edu-card {
+    background: var(--cream);
+    padding: 48px 40px;
+    border-bottom: 3px solid var(--gold);
+    position: relative;
+    overflow: hidden;
+  }
+  .edu-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: transparent;
+  }
+  .edu-year {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px;
+    font-weight: 700;
+    color: rgba(13,27,42,0.07);
+    position: absolute;
+    right: 24px; bottom: 16px;
+    line-height: 1;
+    user-select: none;
+  }
+  .edu-degree {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+  .edu-school {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .edu-date {
+    font-size: 12px;
+    color: var(--gold);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* LANGUAGES */
+  .lang-row {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    margin-top: 60px;
+  }
+  .lang-pill {
+    background: var(--navy);
+    color: var(--white);
+    padding: 10px 24px;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .lang-level {
+    font-size: 10px;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy);
+    padding: 48px 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid rgba(201,168,76,0.2);
+  }
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: var(--gold);
+    font-weight: 600;
+  }
+  .footer-links {
+    display: flex; gap: 28px;
+  }
+  .footer-links a {
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+
+  /* SCROLL ANIMATIONS */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .hero { padding: 100px 24px 60px; }
+    .hero h1 { font-size: 48px; }
+    section { padding: 70px 24px; }
+    .about-grid, .edu-grid, .skills-grid { grid-template-columns: 1fr; }
+    .hero::after { display: none; }
+    footer { flex-direction: column; gap: 20px; text-align: center; }
+  }
+</style>
 </head>
 <body>
-<header>
-    <h1>Divya Naik</h1>
-    <nav>
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#skills">Skills</a>
-        <a href="#education">Education</a>
-    </nav>
-</header>
-<section id="hero">
-    <div class="container">
-        <h2>Data Analytics Professional</h2>
-        <p>With over 6 years of experience in Data Analysis, Data Visualization, and Business Intelligence.</p>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Divya Naik</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#education">Education</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="hero-tag">Data Analytics Professional</div>
+    <h1>Divya<br/><span>Naik</span></h1>
+    <p class="hero-sub">6+ years delivering dashboards, data pipelines, and actionable insights across global teams in Europe and Asia. Proficient in SQL, Python, Power BI, and API automation.</p>
+    <div class="hero-contact">
+      <a href="mailto:divwork22@gmail.com">divwork22@gmail.com</a>
+      <span class="contact-dot"></span>
+      <a href="#">Bellevue, Washington</a>
+      <span class="contact-dot"></span>
+      <a href="https://linkedin.com/in/divya-v-n-16a62b171" target="_blank">LinkedIn</a>
     </div>
+  </div>
 </section>
+
+<!-- ABOUT -->
 <section id="about">
-    <div class="container">
-        <h2>About Me</h2>
-        <p>I am Divya Naik, a passionate data analytics professional with extensive experience in transforming data into actionable insights. I have a strong background in statistical analysis, data mining, and programming.</p>
+  <div class="section-label">Profile</div>
+  <div class="section-title">About Me</div>
+  <div class="about-grid reveal">
+    <p class="about-text">
+      Data Analytics professional with a strong track record of partnering with cross-functional stakeholders to deliver dashboards, reporting systems, and data-driven insights that drive business decisions. I own analytics projects end-to-end — from defining requirements with business leaders to building dashboards, designing processes, and translating complex datasets into clear, actionable narratives.
+      <br/><br/>
+      Experienced in fast-moving, cross-functional environments across global teams in Europe and Asia, with deep expertise in SQL, Python, BI dashboarding, and API pipeline automation.
+    </p>
+    <div class="about-stats">
+      <div class="stat-box">
+        <div class="stat-num">6+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">4</div>
+        <div class="stat-label">Global Sites Served</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">3+</div>
+        <div class="stat-label">Industries</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">5</div>
+        <div class="stat-label">Languages</div>
+      </div>
     </div>
+  </div>
 </section>
+
+<!-- EXPERIENCE -->
 <section id="experience">
-    <div class="container">
-        <h2>Experience</h2>
-        <ul>
-            <li><strong>Senior Data Analyst - ABC Corp</strong> (2020 - Present)<br>Conduct analysis and generate reports for strategic decision-making.</li>
-            <li><strong>Data Analyst - XYZ Inc</strong> (2017 - 2020)<br>Developed dashboards and supported data-driven decision-making processes.</li>
-            <li><strong>Junior Data Analyst - 123 Solutions</strong> (2015 - 2017)<br>Assisted in data collection, cleaning, and basic analysis functions.</li>
-        </ul>
+  <div class="section-label">Career</div>
+  <div class="section-title">Work Experience</div>
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">July 2020 – June 2024</div>
+      <div class="timeline-role">Software Engineer — Data & Analytics</div>
+      <div class="timeline-company">Atlas Copco, Industrial Vacuum Division · Cologne, Germany</div>
+      <ul class="timeline-bullets">
+        <li>Partnered with senior leadership across four global sites to define KPI requirements and deliver data-driven insights guiding operational and product strategy.</li>
+        <li>Built and maintained dashboards surfacing complex multi-source datasets as visual narratives, enabling leadership to track performance and identify risks early.</li>
+        <li>Led performance measurement for Controller 4.0: designed metrics frameworks, tracked KPIs, and delivered structured reporting keeping sprint releases on track.</li>
+        <li>Designed automation concepts to streamline data collection and reduce manual reporting effort across cross-functional Agile teams.</li>
+      </ul>
     </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">March 2023 – June 2024</div>
+      <div class="timeline-role">Sourcing Engineer — International Assignment</div>
+      <div class="timeline-company">Edwards Vacuum · Germany & China</div>
+      <ul class="timeline-bullets">
+        <li>Applied data analysis and business insight to manage sourcing strategy across international markets.</li>
+        <li>Collaborated with cross-cultural stakeholders across Europe and Asia, translating data signals into concrete process improvements.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">April 2019 – June 2020</div>
+      <div class="timeline-role">Data Science Intern — Master Thesis</div>
+      <div class="timeline-company">Leybold, Industrial Vacuum Division · Germany</div>
+      <ul class="timeline-bullets">
+        <li>Performed in-depth EDA and customer data profiling in Python, transforming raw datasets into actionable product insights.</li>
+        <li>Built and deployed automated API pipelines for warehouse data retrieval, eliminating manual collection effort.</li>
+        <li>Developed Deep Neural Network models for real-time sensor prediction, managing the full ML pipeline from feature engineering to deployment.</li>
+        <li>Presented statistical findings at a Data Analytics seminar in Berlin.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">December 2018 – April 2019</div>
+      <div class="timeline-role">Working Student — HR Data Analytics</div>
+      <div class="timeline-company">Leybold, Industrial Vacuum Division · Germany</div>
+      <ul class="timeline-bullets">
+        <li>Preprocessed large SAP datasets and built SQL and Excel-based reporting pipelines for HR stakeholders.</li>
+        <li>Generated workforce insights supporting data-driven headcount and operational planning decisions.</li>
+      </ul>
+    </div>
+
+  </div>
 </section>
+
+<!-- SKILLS -->
 <section id="skills">
-    <div class="container">
-        <h2>Skills</h2>
-        <ul>
-            <li>Data Analysis and Visualization</li>
-            <li>Statistical Software (e.g., R, Python)</li>
-            <li>SQL and Database Management</li>
-            <li>Business Intelligence Tools (e.g., Tableau, Power BI)</li>
-            <li>Strong Communication Skills</li>
-        </ul>
+  <div class="section-label" style="color:var(--gold-light)">Expertise</div>
+  <div class="section-title">Skills & Tools</div>
+  <div class="skills-grid reveal">
+    <div class="skill-card">
+      <div class="skill-card-title">Analytics & BI</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Dashboard Development</span>
+        <span class="skill-tag">KPI Reporting</span>
+        <span class="skill-tag">Power BI</span>
+        <span class="skill-tag">Data Storytelling</span>
+        <span class="skill-tag">Operational Analytics</span>
+        <span class="skill-tag">BI Visualization</span>
+      </div>
     </div>
+    <div class="skill-card">
+      <div class="skill-card-title">Programming & Data</div>
+      <div class="skill-tags">
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">Excel</span>
+        <span class="skill-tag">SAP Data Processing</span>
+        <span class="skill-tag">API Pipeline Automation</span>
+        <span class="skill-tag">Data Pipeline Design</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title">Statistical Methods</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Exploratory Data Analysis</span>
+        <span class="skill-tag">Trend Analysis</span>
+        <span class="skill-tag">Hypothesis Testing</span>
+        <span class="skill-tag">Time Series Forecasting</span>
+        <span class="skill-tag">Pattern Recognition</span>
+        <span class="skill-tag">Variance Analysis</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title">Machine Learning</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Deep Neural Networks</span>
+        <span class="skill-tag">Feature Engineering</span>
+        <span class="skill-tag">Model Training & Validation</span>
+        <span class="skill-tag">Sensor Prediction</span>
+        <span class="skill-tag">Customer Profiling</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title">Process & Collaboration</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Requirements Gathering</span>
+        <span class="skill-tag">Stakeholder Communication</span>
+        <span class="skill-tag">Agile / Scrum</span>
+        <span class="skill-tag">Workflow Automation</span>
+        <span class="skill-tag">Performance Measurement</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title">Languages</div>
+      <div class="skill-tags">
+        <span class="skill-tag">English — Fluent</span>
+        <span class="skill-tag">German — Professional</span>
+        <span class="skill-tag">Kannada</span>
+        <span class="skill-tag">Hindi</span>
+      </div>
+    </div>
+  </div>
 </section>
+
+<!-- EDUCATION -->
 <section id="education">
-    <div class="container">
-        <h2>Education</h2>
-        <ul>
-            <li><strong>M.S. in Data Science</strong> - University of Data (2015)</li>
-            <li><strong>B.A. in Statistics</strong> - University of Numbers (2013)</li>
-        </ul>
+  <div class="section-label">Academic Background</div>
+  <div class="section-title">Education</div>
+  <div class="edu-grid reveal">
+    <div class="edu-card">
+      <div class="edu-year">2020</div>
+      <div class="edu-degree">Master of Science in Automation and IT</div>
+      <div class="edu-school">Cologne University of Applied Sciences · Germany</div>
+      <div class="edu-date">Graduated 2020</div>
     </div>
+    <div class="edu-card">
+      <div class="edu-year">2017</div>
+      <div class="edu-degree">Bachelor of Science in Electronics & Communications Engineering</div>
+      <div class="edu-school">Dr. Ambedkar Institute of Technology · India</div>
+      <div class="edu-date">Graduated 2017</div>
+    </div>
+  </div>
 </section>
+
+<!-- FOOTER -->
 <footer>
-    <div class="container">
-        <p>&copy; 2026 Divya Naik. All Rights Reserved.</p>
-    </div>
+  <div class="footer-name">Divya Naik</div>
+  <div class="footer-links">
+    <a href="mailto:divwork22@gmail.com">divwork22@gmail.com</a>
+    <a href="#">Bellevue, WA</a>
+    <a href="https://linkedin.com/in/divya-v-n-16a62b171" target="_blank">LinkedIn</a>
+  </div>
 </footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(r => observer.observe(r));
+</script>
 </body>
 </html>
